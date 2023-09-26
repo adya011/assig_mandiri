@@ -1,4 +1,4 @@
-package com.nanda.domain.model.resource
+package com.nanda.domain.usecase.resource
 
 import com.nanda.repository.model.DataType
 

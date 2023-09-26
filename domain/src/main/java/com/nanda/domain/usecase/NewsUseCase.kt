@@ -1,7 +1,7 @@
 package com.nanda.domain.usecase
 
 import com.nanda.domain.model.resource.AppDispatchers
-import com.nanda.domain.model.resource.DataState
+import com.nanda.domain.usecase.resource.DataState
 import com.nanda.domain.usecase.model.ArticleUiState
 import com.nanda.repository.NewsRepository
 import com.nanda.repository.model.ArticleEntity
