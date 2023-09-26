@@ -1,4 +1,6 @@
 import com.nanda.buildsrc.AndroidLibraries
+import com.nanda.buildsrc.Modules
+import org.gradle.api.internal.artifacts.Module
 
 plugins {
     id 'com.android.application'
@@ -48,4 +50,8 @@ dependencies {
     implementation AndroidLibraries.recyclerView
     implementation AndroidLibraries.navigation
     implementation AndroidLibraries.navigationFrag
+
+    implementation project(Modules.DataRemote)
+    implementation project(Modules.Domain)
+    implementation project(Modules.DataRepository)
 }
