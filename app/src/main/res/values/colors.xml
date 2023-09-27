@@ -9,4 +9,5 @@
     <color name="text_disabled">#c2c2c2</color>
     <color name="divider_background">#e8e8e8</color>
     <color name="thin_purple">#aeabc6</color>
+    <color name="thick_purple">#696675</color>
 </resources>
