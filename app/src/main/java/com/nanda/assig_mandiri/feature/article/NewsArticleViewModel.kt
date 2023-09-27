@@ -1,10 +1,10 @@
 package com.nanda.assig_mandiri.feature.article
 
 import androidx.lifecycle.ViewModel
-import com.nanda.domain.usecase.NewsUseCase
+import com.nanda.domain.usecase.NewsArticleUseCase
 
 class NewsArticleViewModel(
-    private val newsUseCase: NewsUseCase
+    private val newsArticleUseCase: NewsArticleUseCase
 ) : ViewModel() {
 
 }

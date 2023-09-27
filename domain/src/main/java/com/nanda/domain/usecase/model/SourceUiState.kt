@@ -1,6 +1,6 @@
-package com.nanda.repository.model
+package com.nanda.domain.usecase.model
 
-data class SourceEntity(
+data class SourceUiState(
     val id: String,
     val name: String,
     val description: String,

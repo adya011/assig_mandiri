@@ -11,7 +11,8 @@ class SourceMapper : DataMapper<TopHeadlineDto, List<SourceEntity>> {
             SourceEntity(
                 id = it.id,
                 name = it.name,
-                description = it.description
+                description = it.description,
+                url = it.url
             )
         }.orEmpty()
 }

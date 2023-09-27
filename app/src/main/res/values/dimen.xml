@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="text_m">16sp</dimen>
-    <dimen name="text_l">24sp</dimen>
+    <dimen name="text_l">20sp</dimen>
+    <dimen name="margin_xs">5dp</dimen>
     <dimen name="margin_s">10dp</dimen>
     <dimen name="margin_m">20dp</dimen>
     <dimen name="margin_l">30dp</dimen>
     <dimen name="item_margin">5dp</dimen>
-    <dimen name="item_radius">8dp</dimen>
+    <dimen name="item_margin_source">8dp</dimen>
+    <dimen name="item_radius_s">4dp</dimen>
+    <dimen name="item_radius_m">8dp</dimen>
 </resources>

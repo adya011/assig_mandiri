@@ -20,6 +20,7 @@ interface NewsApi {
 
     @GET("top-headlines/sources")
     fun topHeadlines(
-        @Query("category") category: String
+        @Query("category") category: String,
+        @Query("apiKey") apiKey: String = API_KEY
     ): Deferred<Response<TopHeadlineDto>>
 }
