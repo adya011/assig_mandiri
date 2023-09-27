@@ -28,6 +28,7 @@ class NewsCategoryAdapter(val onClick: (CategoryType) -> Unit) :
         private val binding: ItemCategoryBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: NewsCategoryUiState) = with(binding) {
+            ivCategory.setImageResource(item.image)
             tvCategoryName.text = item.type.title
             root.setOnClickListener {
                 onClick.invoke(item.type)

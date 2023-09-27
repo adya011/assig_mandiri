@@ -11,19 +11,29 @@
         app:cardCornerRadius="@dimen/item_radius">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:orientation="vertical"
             android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/iv_category"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:gravity="center_horizontal"
+                tools:src="@drawable/ic_business" />
 
             <TextView
                 android:id="@+id/tv_category_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_s"
                 android:gravity="center"
                 android:lines="1"
                 android:textColor="@color/text_primary"
                 android:textSize="@dimen/text_m"
+                android:textStyle="bold"
                 tools:text="Category" />
 
         </LinearLayout>
