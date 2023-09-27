@@ -9,10 +9,10 @@ class SourceMapper : DataMapper<TopHeadlineDto, List<SourceEntity>> {
     override fun mapDataModel(dataModel: TopHeadlineDto?): List<SourceEntity> =
         dataModel?.sources?.map {
             SourceEntity(
-                id = it.id,
-                name = it.name,
-                description = it.description,
-                url = it.url
+                id = it.id.orEmpty(),
+                name = it.name.orEmpty(),
+                description = it.description.orEmpty(),
+                url = it.url.orEmpty()
             )
         }.orEmpty()
 }

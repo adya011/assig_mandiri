@@ -19,24 +19,24 @@ class NewsSourceViewModel(
     private val _newsSourceLiveData by lazy { MutableLiveData<List<SourceUiState>>() }
     val newsSourceLiveData: LiveData<List<SourceUiState>> get() = _newsSourceLiveData
 
-    private val _displayChild: MutableLiveData<Int> = MutableLiveData()
-    val displayChild get() = _displayChild as LiveData<Int>
+    private val _displayChild: MutableLiveData<Pair<Int, String>> = MutableLiveData()
+    val displayChild get() = _displayChild as LiveData<Pair<Int, String>>
 
     fun fetchNewsSource(category: String) {
         viewModelScope.launch {
             newsArticleUseCase.getSources(category).collect { result ->
                 when (result) {
                     is DataState.Loading -> {
-                        _displayChild.value = CHILD_INDEX_LOADING
+                        _displayChild.value = CHILD_INDEX_LOADING to ""
                     }
 
                     is DataState.Success -> {
                         _newsSourceLiveData.value = result.data
-                        _displayChild.value = CHILD_INDEX_SUCCESS
+                        _displayChild.value = CHILD_INDEX_SUCCESS to ""
                     }
 
                     is DataState.Failure -> {
-                        _displayChild.value = CHILD_INDEX_ERROR
+                        _displayChild.value = CHILD_INDEX_ERROR to result.errorMessage
                     }
                 }
             }

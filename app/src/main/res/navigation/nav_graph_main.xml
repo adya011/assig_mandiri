@@ -26,6 +26,9 @@
     <fragment
         android:id="@+id/fragment_news_article"
         android:name="com.nanda.assig_mandiri.feature.article.NewsArticleFragment">
+        <action
+            android:id="@+id/open_webview"
+            app:destination="@id/fragment_webview" />
         <argument
             android:name="source"
             android:defaultValue=""
@@ -34,6 +37,11 @@
 
     <fragment
         android:id="@+id/fragment_webview"
-        android:name="com.nanda.assig_mandiri.feature.WebviewFragment" />
+        android:name="com.nanda.assig_mandiri.feature.WebviewFragment">
+        <argument
+            android:name="url"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
 
 </navigation>

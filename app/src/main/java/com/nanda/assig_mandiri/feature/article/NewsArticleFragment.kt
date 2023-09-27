@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.nanda.assig_mandiri.R
 import com.nanda.assig_mandiri.base.BaseFragment
 import com.nanda.assig_mandiri.databinding.FragmentNewsArticleBinding
+import com.nanda.assig_mandiri.util.url
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NewsArticleFragment : BaseFragment() {
@@ -55,7 +57,12 @@ class NewsArticleFragment : BaseFragment() {
 
     private fun setupAdapter() = with(binding) {
         articleAdapter = NewsArticleAdapter {
-
+            findNavController().navigate(
+                R.id.open_webview,
+                bundleOf(
+                    url to it
+                )
+            )
         }
 
         rvArticle.adapter = articleAdapter
@@ -66,7 +73,8 @@ class NewsArticleFragment : BaseFragment() {
             articleAdapter?.submitList(articles)
         }
         viewModel.displayChild.observe(viewLifecycleOwner) {
-            binding.vfContent.displayedChild = it
+            binding.vfContent.displayedChild = it.first
+            binding.tvErrorMessage.text = it.second
         }
     }
 }

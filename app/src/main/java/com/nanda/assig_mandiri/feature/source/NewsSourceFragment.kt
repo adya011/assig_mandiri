@@ -77,7 +77,8 @@ class NewsSourceFragment : BaseFragment() {
             sourceAdapter?.submitList(sources)
         }
         viewModel.displayChild.observe(viewLifecycleOwner) {
-            binding.vfContent.displayedChild = it
+            binding.vfContent.displayedChild = it.first
+            binding.tvErrorMessage.text = it.second
         }
     }
 }

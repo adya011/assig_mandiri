@@ -36,6 +36,9 @@ class NewsArticleAdapter(val onCLick: (String) -> Unit) :
                 item.urlToImage,
                 R.drawable.bg_placeholder
             )
+            root.setOnClickListener {
+                onCLick.invoke(item.url)
+            }
         }
     }
 

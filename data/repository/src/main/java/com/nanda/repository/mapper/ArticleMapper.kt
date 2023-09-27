@@ -9,11 +9,11 @@ class ArticleMapper : DataMapper<EverythingDto, List<ArticleEntity>> {
     override fun mapDataModel(dataModel: EverythingDto?): List<ArticleEntity> =
         dataModel?.articles?.map {
             ArticleEntity(
-                id = it.source.id,
-                title = it.title,
-                description = it.description,
-                url = it.url,
-                urlToImage = it.urlToImage
+                id = it.source?.id.orEmpty(),
+                title = it.title.orEmpty(),
+                description = it.description.orEmpty(),
+                url = it.url.orEmpty(),
+                urlToImage = it.urlToImage.orEmpty()
             )
         }.orEmpty()
 }
