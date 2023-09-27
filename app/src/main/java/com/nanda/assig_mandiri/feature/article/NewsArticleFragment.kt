@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.nanda.assig_mandiri.R
+import com.nanda.assig_mandiri.base.BaseFragment
 import com.nanda.assig_mandiri.databinding.FragmentNewsArticleBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class NewsArticleFragment : Fragment() {
+class NewsArticleFragment : BaseFragment() {
 
     private val viewModel by viewModel<NewsArticleViewModel>()
 
@@ -64,6 +64,9 @@ class NewsArticleFragment : Fragment() {
     private fun setupObserver() {
         viewModel.newsArticleLiveData.observe(viewLifecycleOwner) { articles ->
             articleAdapter?.submitList(articles)
+        }
+        viewModel.displayChild.observe(viewLifecycleOwner) {
+            binding.vfContent.displayedChild = it
         }
     }
 }

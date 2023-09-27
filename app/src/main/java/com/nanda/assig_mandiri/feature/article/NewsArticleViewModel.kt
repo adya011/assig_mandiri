@@ -1,10 +1,12 @@
 package com.nanda.assig_mandiri.feature.article
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.nanda.assig_mandiri.util.CHILD_INDEX_ERROR
+import com.nanda.assig_mandiri.util.CHILD_INDEX_LOADING
+import com.nanda.assig_mandiri.util.CHILD_INDEX_SUCCESS
 import com.nanda.domain.usecase.NewsArticleUseCase
 import com.nanda.domain.usecase.model.ArticleUiState
 import com.nanda.domain.usecase.resource.DataState
@@ -17,21 +19,24 @@ class NewsArticleViewModel(
     private val _newsArticleLiveData by lazy { MutableLiveData<List<ArticleUiState>>() }
     val newsArticleLiveData: LiveData<List<ArticleUiState>> get() = _newsArticleLiveData
 
+    private val _displayChild: MutableLiveData<Int> = MutableLiveData()
+    val displayChild get() = _displayChild as LiveData<Int>
+
     fun fetchNewsArticle(source: String) {
         viewModelScope.launch {
             newsArticleUseCase.getArticle(source).collect { result ->
                 when (result) {
                     is DataState.Loading -> {
-                        Log.d("nandaDebug", "news article loading")
+                        _displayChild.value = CHILD_INDEX_LOADING
                     }
 
                     is DataState.Success -> {
-                        Log.d("nandaDebug", "news article success")
                         _newsArticleLiveData.value = result.data
+                        _displayChild.value = CHILD_INDEX_SUCCESS
                     }
 
                     is DataState.Failure -> {
-                        Log.d("nandaDebug", "news article failure: ${result.errorMessage}")
+                        _displayChild.value = CHILD_INDEX_ERROR
                     }
                 }
             }

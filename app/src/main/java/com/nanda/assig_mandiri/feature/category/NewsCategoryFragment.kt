@@ -5,17 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.nanda.assig_mandiri.R
+import com.nanda.assig_mandiri.base.BaseFragment
 import com.nanda.assig_mandiri.databinding.FragmentNewsCategoryBinding
-import com.nanda.assig_mandiri.feature.category.NewsCategoryAdapter
 import com.nanda.assig_mandiri.model.CategoryType
 import com.nanda.assig_mandiri.model.NewsCategoryUiState
+import com.nanda.assig_mandiri.util.category
+import com.nanda.assig_mandiri.util.categoryName
 
-
-class NewsCategoryFragment : Fragment() {
+class NewsCategoryFragment : BaseFragment() {
 
     private var _binding: FragmentNewsCategoryBinding? = null
     private val binding get() = _binding!!
@@ -56,8 +56,8 @@ class NewsCategoryFragment : Fragment() {
             findNavController().navigate(
                 R.id.open_news_source,
                 bundleOf(
-                    "category" to it.value,
-                    "category_name" to it.title
+                    category to it.value,
+                    categoryName to it.title
                 )
             )
         }.apply {

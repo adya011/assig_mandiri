@@ -5,14 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.nanda.assig_mandiri.R
+import com.nanda.assig_mandiri.base.BaseFragment
 import com.nanda.assig_mandiri.databinding.FragmentNewsSourceBinding
+import com.nanda.assig_mandiri.util.category
+import com.nanda.assig_mandiri.util.categoryName
+import com.nanda.assig_mandiri.util.source
+import com.nanda.assig_mandiri.util.sourceName
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
-class NewsSourceFragment : Fragment() {
+class NewsSourceFragment : BaseFragment() {
 
     private val viewModel by viewModel<NewsSourceViewModel>()
 
@@ -32,8 +35,8 @@ class NewsSourceFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val category = arguments?.getString("category").orEmpty()
-        val categoryTitle = arguments?.getString("category_name").orEmpty()
+        val category = arguments?.getString(category).orEmpty()
+        val categoryTitle = arguments?.getString(categoryName).orEmpty()
         viewModel.fetchNewsSource(category)
         setToolbar(categoryTitle)
         setupAdapter()
@@ -60,8 +63,8 @@ class NewsSourceFragment : Fragment() {
             findNavController().navigate(
                 R.id.open_news_article,
                 bundleOf(
-                    "source" to id,
-                    "source_name" to name
+                    source to id,
+                    sourceName to name
                 )
             )
         }
@@ -72,6 +75,9 @@ class NewsSourceFragment : Fragment() {
     private fun setupObserver() {
         viewModel.newsSourceLiveData.observe(viewLifecycleOwner) { sources ->
             sourceAdapter?.submitList(sources)
+        }
+        viewModel.displayChild.observe(viewLifecycleOwner) {
+            binding.vfContent.displayedChild = it
         }
     }
 }
