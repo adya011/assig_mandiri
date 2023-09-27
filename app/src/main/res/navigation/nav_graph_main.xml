@@ -5,6 +5,27 @@
 
     <fragment
         android:id="@+id/fragment_news_category"
-        android:name="com.nanda.assig_mandiri.feature.category.NewsCategoryFragment" />
+        android:name="com.nanda.assig_mandiri.feature.category.NewsCategoryFragment">
+        <action
+            android:id="@+id/open_news_source"
+            app:destination="@id/fragment_news_source" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_news_source"
+        android:name="com.nanda.assig_mandiri.feature.source.NewsSourceFragment">
+        <argument
+            android:name="category"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_news_article"
+        android:name="com.nanda.assig_mandiri.feature.article.NewsArticleFragment" />
+
+    <fragment
+        android:id="@+id/fragment_webview"
+        android:name="com.nanda.assig_mandiri.feature.WebviewFragment" />
 
 </navigation>

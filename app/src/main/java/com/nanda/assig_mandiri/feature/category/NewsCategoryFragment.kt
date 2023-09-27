@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.nanda.assig_mandiri.R
 import com.nanda.assig_mandiri.databinding.FragmentNewsCategoryBinding
 import com.nanda.assig_mandiri.feature.category.adapter.NewsCategoryAdapter
 import com.nanda.assig_mandiri.model.CategoryType
@@ -18,6 +21,16 @@ class NewsCategoryFragment : Fragment() {
     private val binding get() = _binding!!
 
     private var categoryAdapter: NewsCategoryAdapter? = null
+
+    private val categoryList = listOf(
+        NewsCategoryUiState(CategoryType.BUSINESS, image = R.drawable.ic_business),
+        NewsCategoryUiState(CategoryType.ENTERTAINMENT, image = R.drawable.ic_entertainment),
+        NewsCategoryUiState(CategoryType.GENERAL, image = R.drawable.ic_general),
+        NewsCategoryUiState(CategoryType.HEALTH, image = R.drawable.ic_health),
+        NewsCategoryUiState(CategoryType.SCIENCE, image = R.drawable.ic_science),
+        NewsCategoryUiState(CategoryType.SPORTS, image = R.drawable.ic_sports),
+        NewsCategoryUiState(CategoryType.TECHNOLOGY, image = R.drawable.ic_technology)
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,19 +52,15 @@ class NewsCategoryFragment : Fragment() {
     }
 
     private fun setupAdapter() = with(binding) {
-        categoryAdapter = NewsCategoryAdapter().apply {
-            submitList(
-                listOf(
-                    NewsCategoryUiState(name = CategoryType.BUSINESS.value, imgUrl = ""),
-                    NewsCategoryUiState(name = CategoryType.ENTERTAINMENT.value, imgUrl = ""),
-                    NewsCategoryUiState(name = CategoryType.GENERAL.value, imgUrl = ""),
-                    NewsCategoryUiState(name = CategoryType.HEALTH.value, imgUrl = ""),
-                    NewsCategoryUiState(name = CategoryType.SCIENCE.value, imgUrl = ""),
-                    NewsCategoryUiState(name = CategoryType.SPORTS.value, imgUrl = ""),
-                    NewsCategoryUiState(name = CategoryType.HEALTH.value, imgUrl = ""),
-                    NewsCategoryUiState(name = CategoryType.TECHNOLOGY.value, imgUrl = "")
+        categoryAdapter = NewsCategoryAdapter {
+            findNavController().navigate(
+                R.id.open_news_source,
+                bundleOf(
+                    "category" to it.value
                 )
             )
+        }.apply {
+            submitList(categoryList)
         }
         rvCategory.apply {
             adapter = categoryAdapter
