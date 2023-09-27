@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.nanda.assig_mandiri.R
 import com.nanda.assig_mandiri.databinding.FragmentNewsSourceBinding
-import com.nanda.assig_mandiri.feature.source.adapter.NewsSourceAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

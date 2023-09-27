@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.nanda.assig_mandiri.R
 import com.nanda.assig_mandiri.databinding.FragmentNewsCategoryBinding
-import com.nanda.assig_mandiri.feature.category.adapter.NewsCategoryAdapter
 import com.nanda.assig_mandiri.model.CategoryType
 import com.nanda.assig_mandiri.model.NewsCategoryUiState
 

@@ -1,4 +1,4 @@
-package com.nanda.assig_mandiri.feature.category.adapter
+package com.nanda.assig_mandiri.feature.category
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
