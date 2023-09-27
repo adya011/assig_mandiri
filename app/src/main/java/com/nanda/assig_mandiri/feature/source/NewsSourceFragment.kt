@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.nanda.assig_mandiri.R
@@ -32,8 +33,9 @@ class NewsSourceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val category = arguments?.getString("category").orEmpty()
+        val categoryTitle = arguments?.getString("category_name").orEmpty()
         viewModel.fetchNewsSource(category)
-        setToolbar()
+        setToolbar(categoryTitle)
         setupAdapter()
         setupObserver()
     }
@@ -43,24 +45,33 @@ class NewsSourceFragment : Fragment() {
         _binding = null
     }
 
-    private fun setToolbar() = with(binding) {
-        toolbar.setNavigationIcon(R.drawable.ic_back)
-        toolbar.setNavigationOnClickListener {
-            findNavController().navigateUp()
+    private fun setToolbar(title: String) = with(binding) {
+        tvTitle.text = title
+        toolbar.apply {
+            setNavigationIcon(R.drawable.ic_back)
+            setNavigationOnClickListener {
+                findNavController().navigateUp()
+            }
         }
     }
 
     private fun setupAdapter() = with(binding) {
-        sourceAdapter = NewsSourceAdapter {
-
+        sourceAdapter = NewsSourceAdapter { id, name ->
+            findNavController().navigate(
+                R.id.open_news_article,
+                bundleOf(
+                    "source" to id,
+                    "source_name" to name
+                )
+            )
         }
 
         rvSource.adapter = sourceAdapter
     }
 
     private fun setupObserver() {
-        viewModel.newsSourceData.observe(viewLifecycleOwner) {
-            sourceAdapter?.submitList(it)
+        viewModel.newsSourceLiveData.observe(viewLifecycleOwner) { sources ->
+            sourceAdapter?.submitList(sources)
         }
     }
 }

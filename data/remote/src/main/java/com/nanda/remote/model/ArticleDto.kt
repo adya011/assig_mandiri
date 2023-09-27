@@ -3,6 +3,7 @@ package com.nanda.remote.model
 import com.squareup.moshi.Json
 
 data class ArticleDto(
+    @Json(name = "source") val source: ArticleSourceDto,
     @Json(name = "author") val author: String,
     @Json(name = "title") val title: String,
     @Json(name = "description") val description: String,

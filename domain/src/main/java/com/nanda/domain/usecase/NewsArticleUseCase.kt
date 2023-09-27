@@ -15,10 +15,10 @@ class NewsArticleUseCase(
     private val newsRepository: NewsRepository,
     private val appDispatchers: AppDispatchers
 ) {
-    fun getArticle() = flow {
+    fun getArticle(source: String) = flow {
         emit(DataState.Loading(null))
 
-        when (val response = newsRepository.getArticle()) {
+        when (val response = newsRepository.getArticle(source)) {
             is DataResult.Success -> {
                 val data = response.body
                 emit(DataState.Success(data.mapNewsArticle()))
@@ -33,13 +33,11 @@ class NewsArticleUseCase(
     private fun List<ArticleEntity>.mapNewsArticle(): List<ArticleUiState> {
         return map {
             ArticleUiState(
-                author = it.author,
+                id = it.id,
                 title = it.title,
                 description = it.description,
                 url = it.url,
-                urlToImage = it.urlToImage,
-                publishedAt = it.publishedAt,
-                content = it.content
+                urlToImage = it.urlToImage
             )
         }
     }

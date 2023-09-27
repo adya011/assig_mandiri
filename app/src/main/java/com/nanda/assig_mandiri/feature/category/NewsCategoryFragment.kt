@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.nanda.assig_mandiri.R
 import com.nanda.assig_mandiri.databinding.FragmentNewsCategoryBinding
+import com.nanda.assig_mandiri.feature.category.NewsCategoryAdapter
 import com.nanda.assig_mandiri.model.CategoryType
 import com.nanda.assig_mandiri.model.NewsCategoryUiState
 
@@ -55,7 +56,8 @@ class NewsCategoryFragment : Fragment() {
             findNavController().navigate(
                 R.id.open_news_source,
                 bundleOf(
-                    "category" to it.value
+                    "category" to it.value,
+                    "category_name" to it.title
                 )
             )
         }.apply {

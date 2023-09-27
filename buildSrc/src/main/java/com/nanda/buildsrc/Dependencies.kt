@@ -7,6 +7,7 @@ import com.nanda.buildsrc.Versions.recyclerview
 object AndroidLibraries {
     // UI
     const val recyclerView = "androidx.recyclerview:recyclerview:$recyclerview"
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
 
     // Navigation
     const val navigation = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
@@ -34,6 +35,7 @@ object Versions {
     const val moshiConverter = "2.0.0"
     const val coroutines = "1.6.0"
     const val gson = "2.10.1"
+    const val glide = "4.15.1"
 }
 
 object Modules {

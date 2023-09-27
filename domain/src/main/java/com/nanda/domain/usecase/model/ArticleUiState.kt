@@ -1,11 +1,9 @@
 package com.nanda.domain.usecase.model
 
 data class ArticleUiState(
-    val author: String,
+    val id: String,
     val title: String,
     val description: String,
     val url: String,
-    val urlToImage: String,
-    val publishedAt: String,
-    val content: String
+    val urlToImage: String
 )

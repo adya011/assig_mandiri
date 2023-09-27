@@ -13,8 +13,8 @@ class NewsSourceViewModel(
     private val newsArticleUseCase: NewsArticleUseCase
 ) : ViewModel() {
 
-    private val _newsSourceData by lazy { MutableLiveData<List<SourceUiState>>() }
-    val newsSourceData: LiveData<List<SourceUiState>> get() = _newsSourceData
+    private val _newsSourceLiveData by lazy { MutableLiveData<List<SourceUiState>>() }
+    val newsSourceLiveData: LiveData<List<SourceUiState>> get() = _newsSourceLiveData
 
     fun fetchNewsSource(category: String) {
         viewModelScope.launch {
@@ -25,7 +25,7 @@ class NewsSourceViewModel(
                     }
 
                     is DataState.Success -> {
-                        _newsSourceData.value = result.data
+                        _newsSourceLiveData.value = result.data
                     }
 
                     is DataState.Failure -> {

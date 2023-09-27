@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nanda.assig_mandiri.databinding.ItemSourceBinding
 import com.nanda.domain.usecase.model.SourceUiState
 
-class NewsSourceAdapter(val onClick: (String) -> Unit) :
+class NewsSourceAdapter(val onClick: (String, String) -> Unit) :
     ListAdapter<SourceUiState, RecyclerView.ViewHolder>(COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -16,7 +16,6 @@ class NewsSourceAdapter(val onClick: (String) -> Unit) :
             LayoutInflater.from(parent.context),
             parent, false
         )
-
         return NewsSourceViewHolder(binding)
     }
 
@@ -31,6 +30,9 @@ class NewsSourceAdapter(val onClick: (String) -> Unit) :
             tvTitle.text = item.name
             tvSource.text = item.url
             tvDescription.text = item.description
+            root.setOnClickListener {
+                onClick.invoke(item.id, item.name)
+            }
         }
     }
 

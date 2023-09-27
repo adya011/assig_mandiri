@@ -55,6 +55,7 @@ dependencies {
     implementation AndroidLibraries.recyclerView
     implementation AndroidLibraries.navigation
     implementation AndroidLibraries.navigationFrag
+    implementation AndroidLibraries.glide
 
     implementation project(Modules.DataRemote)
     implementation project(Modules.Domain)
