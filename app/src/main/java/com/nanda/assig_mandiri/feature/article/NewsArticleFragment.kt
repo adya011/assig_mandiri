@@ -48,13 +48,29 @@ class NewsArticleFragment : BaseFragment() {
         _binding = null
     }
 
-    private fun setToolbar(title: String) = with(binding) {
+    private fun setToolbar(title: String) {
         val toolbarBinding = LayoutToolbarArticleBinding.bind(binding.root)
-        toolbarBinding.tvTitle.text = title
-        toolbarBinding.toolbar.apply {
-            setNavigationIcon(R.drawable.ic_back)
-            setNavigationOnClickListener {
-                findNavController().navigateUp()
+        var toolbarSearchMode = false
+
+        with(toolbarBinding) {
+            tvTitle.text = title
+            toolbar.apply {
+                setNavigationIcon(R.drawable.ic_back)
+                setNavigationOnClickListener {
+                    findNavController().navigateUp()
+                }
+            }
+            ivLup.setOnClickListener {
+                toolbarSearchMode = !toolbarSearchMode
+                if (toolbarSearchMode) {
+                    tvTitle.visibility = View.GONE
+                    tvPageType.visibility = View.GONE
+                    etToolbarSearch.visibility = View.VISIBLE
+                } else {
+                    tvTitle.visibility = View.VISIBLE
+                    tvPageType.visibility = View.VISIBLE
+                    etToolbarSearch.visibility = View.GONE
+                }
             }
         }
     }
