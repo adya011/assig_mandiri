@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.nanda.assig_mandiri.R
 import com.nanda.assig_mandiri.base.BaseFragment
 import com.nanda.assig_mandiri.databinding.FragmentNewsArticleBinding
+import com.nanda.assig_mandiri.databinding.LayoutToolbarArticleBinding
 import com.nanda.assig_mandiri.util.ARG_SOURCE_NAME
 import com.nanda.assig_mandiri.util.ARG_SOURCE_VALUE
 import com.nanda.assig_mandiri.util.URL
@@ -48,8 +49,9 @@ class NewsArticleFragment : BaseFragment() {
     }
 
     private fun setToolbar(title: String) = with(binding) {
-        tvTitle.text = title
-        toolbar.apply {
+        val toolbarBinding = LayoutToolbarArticleBinding.bind(binding.root)
+        toolbarBinding.tvTitle.text = title
+        toolbarBinding.toolbar.apply {
             setNavigationIcon(R.drawable.ic_back)
             setNavigationOnClickListener {
                 findNavController().navigateUp()
@@ -59,14 +61,8 @@ class NewsArticleFragment : BaseFragment() {
 
     private fun setupAdapter() = with(binding) {
         articleAdapter = NewsArticleAdapter {
-            findNavController().navigate(
-                R.id.open_webview,
-                bundleOf(
-                    URL to it
-                )
-            )
+            navigateToWebView(it)
         }
-
         rvArticle.adapter = articleAdapter
     }
 
@@ -78,5 +74,14 @@ class NewsArticleFragment : BaseFragment() {
             binding.vfContent.displayedChild = it.first
             binding.tvErrorMessage.text = it.second
         }
+    }
+
+    private fun navigateToWebView(url: String) {
+        findNavController().navigate(
+            R.id.open_webview,
+            bundleOf(
+                URL to url
+            )
+        )
     }
 }

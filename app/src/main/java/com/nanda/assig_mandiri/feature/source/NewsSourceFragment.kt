@@ -64,7 +64,6 @@ class NewsSourceFragment : BaseFragment() {
         sourceAdapter = NewsSourceAdapter { id, name ->
             navigateToNewsArticle(id, name)
         }
-
         rvSource.adapter = sourceAdapter
     }
 
