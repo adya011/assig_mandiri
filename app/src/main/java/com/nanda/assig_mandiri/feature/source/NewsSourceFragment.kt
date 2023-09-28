@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.nanda.assig_mandiri.R
 import com.nanda.assig_mandiri.base.BaseFragment
 import com.nanda.assig_mandiri.databinding.FragmentNewsSourceBinding
-import com.nanda.assig_mandiri.util.category
+import com.nanda.assig_mandiri.util.categoryValue
 import com.nanda.assig_mandiri.util.categoryName
 import com.nanda.assig_mandiri.util.source
 import com.nanda.assig_mandiri.util.sourceName
@@ -35,7 +35,7 @@ class NewsSourceFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val category = arguments?.getString(category).orEmpty()
+        val category = arguments?.getString(categoryValue).orEmpty()
         val categoryTitle = arguments?.getString(categoryName).orEmpty()
         viewModel.fetchNewsSource(category)
         setToolbar(categoryTitle)

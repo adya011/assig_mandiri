@@ -7,10 +7,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.nanda.assig_mandiri.databinding.ItemCategoryBinding
 import com.nanda.assig_mandiri.model.CategoryType
-import com.nanda.assig_mandiri.model.NewsCategoryUiState
 
 class NewsCategoryAdapter(val onClick: (CategoryType) -> Unit) :
-    ListAdapter<NewsCategoryUiState, RecyclerView.ViewHolder>(COMPARATOR) {
+    ListAdapter<CategoryType, RecyclerView.ViewHolder>(COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding = ItemCategoryBinding.inflate(
@@ -27,25 +26,25 @@ class NewsCategoryAdapter(val onClick: (CategoryType) -> Unit) :
     inner class NewsCategoryViewHolder(
         private val binding: ItemCategoryBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: NewsCategoryUiState) = with(binding) {
-            ivCategory.setImageResource(item.image)
-            tvCategoryName.text = item.type.title
+        fun bind(item: CategoryType) = with(binding) {
+            ivCategory.setImageResource(item.icon)
+            tvCategoryName.text = item.title
             root.setOnClickListener {
-                onClick.invoke(item.type)
+                onClick.invoke(item)
             }
         }
     }
 
     companion object {
-        private val COMPARATOR = object : DiffUtil.ItemCallback<NewsCategoryUiState>() {
+        private val COMPARATOR = object : DiffUtil.ItemCallback<CategoryType>() {
             override fun areItemsTheSame(
-                oldItem: NewsCategoryUiState,
-                newItem: NewsCategoryUiState
-            ): Boolean = oldItem.type == newItem.type
+                oldItem: CategoryType,
+                newItem: CategoryType
+            ): Boolean = oldItem.value == newItem.value
 
             override fun areContentsTheSame(
-                oldItem: NewsCategoryUiState,
-                newItem: NewsCategoryUiState
+                oldItem: CategoryType,
+                newItem: CategoryType
             ): Boolean = oldItem == newItem
 
         }
