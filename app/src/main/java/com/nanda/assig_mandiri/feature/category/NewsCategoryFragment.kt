@@ -10,8 +10,8 @@ import com.nanda.assig_mandiri.R
 import com.nanda.assig_mandiri.base.BaseFragment
 import com.nanda.assig_mandiri.databinding.FragmentNewsCategoryBinding
 import com.nanda.assig_mandiri.model.CategoryType
-import com.nanda.assig_mandiri.util.categoryValue
-import com.nanda.assig_mandiri.util.categoryName
+import com.nanda.assig_mandiri.util.ARG_CATEGORY_VALUE
+import com.nanda.assig_mandiri.util.ARG_CATEGORY_NAME
 
 class NewsCategoryFragment : BaseFragment() {
 
@@ -47,8 +47,8 @@ class NewsCategoryFragment : BaseFragment() {
         findNavController().navigate(
             R.id.open_news_source,
             bundleOf(
-                categoryValue to category.value,
-                categoryName to category.title
+                ARG_CATEGORY_VALUE to category.value,
+                ARG_CATEGORY_NAME to category.title
             )
         )
     }

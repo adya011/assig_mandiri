@@ -9,7 +9,9 @@ import androidx.navigation.fragment.findNavController
 import com.nanda.assig_mandiri.R
 import com.nanda.assig_mandiri.base.BaseFragment
 import com.nanda.assig_mandiri.databinding.FragmentNewsArticleBinding
-import com.nanda.assig_mandiri.util.url
+import com.nanda.assig_mandiri.util.ARG_SOURCE_NAME
+import com.nanda.assig_mandiri.util.ARG_SOURCE_VALUE
+import com.nanda.assig_mandiri.util.URL
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NewsArticleFragment : BaseFragment() {
@@ -32,8 +34,8 @@ class NewsArticleFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val sourceId = arguments?.getString("source").orEmpty()
-        val sourceName = arguments?.getString("source_name").orEmpty()
+        val sourceId = arguments?.getString(ARG_SOURCE_VALUE).orEmpty()
+        val sourceName = arguments?.getString(ARG_SOURCE_NAME).orEmpty()
         viewModel.fetchNewsArticle(sourceId)
         setToolbar(sourceName)
         setupAdapter()
@@ -60,7 +62,7 @@ class NewsArticleFragment : BaseFragment() {
             findNavController().navigate(
                 R.id.open_webview,
                 bundleOf(
-                    url to it
+                    URL to it
                 )
             )
         }

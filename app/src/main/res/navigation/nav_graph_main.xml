@@ -17,10 +17,10 @@
         <action
             android:id="@+id/open_news_article"
             app:destination="@+id/fragment_news_article" />
-        <argument
-            android:name="category"
+        <!--<argument
+            android:name="category_value"
             android:defaultValue=""
-            app:argType="string" />
+            app:argType="string" />-->
     </fragment>
 
     <fragment
@@ -29,19 +29,19 @@
         <action
             android:id="@+id/open_webview"
             app:destination="@id/fragment_webview" />
-        <argument
-            android:name="source"
+        <!--<argument
+            android:name="source_value"
             android:defaultValue=""
-            app:argType="string" />
+            app:argType="string" />-->
     </fragment>
 
     <fragment
         android:id="@+id/fragment_webview"
         android:name="com.nanda.assig_mandiri.feature.WebviewFragment">
-        <argument
+        <!--<argument
             android:name="url"
             android:defaultValue=""
-            app:argType="string" />
+            app:argType="string" />-->
     </fragment>
 
 </navigation>
