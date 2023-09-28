@@ -22,9 +22,11 @@ class NewsArticleViewModel(
     private val _displayChild: MutableLiveData<Pair<Int, String>> = MutableLiveData()
     val displayChild get() = _displayChild as LiveData<Pair<Int, String>>
 
+    private var query = ""
+
     fun fetchNewsArticle(source: String) {
         viewModelScope.launch {
-            newsArticleUseCase.getArticle(source).collect { result ->
+            newsArticleUseCase.getArticle(source, query).collect { result ->
                 when (result) {
                     is DataState.Loading -> {
                         _displayChild.value = CHILD_INDEX_LOADING to ""
@@ -42,4 +44,10 @@ class NewsArticleViewModel(
             }
         }
     }
+
+    fun setQuery(text: String) { query = text }
+
+    fun clearQuery() { query = "" }
+
+    fun getQuery() = query
 }

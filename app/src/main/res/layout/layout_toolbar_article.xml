@@ -53,11 +53,27 @@
                 android:layout_width="@dimen/zero"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/margin_m"
+                android:imeOptions="actionGo"
+                android:inputType="text"
                 android:visibility="gone"
-                android:inputType="textFilter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_clear"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/tv_clear"
+                android:layout_width="@dimen/toolbar_lup_size"
+                android:layout_height="@dimen/toolbar_lup_size"
+                android:layout_marginEnd="@dimen/margin_m"
+                android:src="@drawable/iv_clear"
+                android:text="@string/clear"
+                android:textColor="@color/thick_purple"
+                android:textSize="@dimen/text_m"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/iv_lup"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:visibility="visible" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,13 @@
 package com.nanda.assig_mandiri.feature.article
 
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.core.os.bundleOf
+import androidx.core.widget.doOnTextChanged
 import androidx.navigation.fragment.findNavController
 import com.nanda.assig_mandiri.R
 import com.nanda.assig_mandiri.base.BaseFragment
@@ -23,6 +26,7 @@ class NewsArticleFragment : BaseFragment() {
     private val binding get() = _binding!!
 
     private var articleAdapter: NewsArticleAdapter? = null
+    private lateinit var sourceId: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +39,7 @@ class NewsArticleFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val sourceId = arguments?.getString(ARG_SOURCE_VALUE).orEmpty()
+        sourceId = arguments?.getString(ARG_SOURCE_VALUE).orEmpty()
         val sourceName = arguments?.getString(ARG_SOURCE_NAME).orEmpty()
         viewModel.fetchNewsArticle(sourceId)
         setToolbar(sourceName)
@@ -66,11 +70,32 @@ class NewsArticleFragment : BaseFragment() {
                     tvTitle.visibility = View.GONE
                     tvPageType.visibility = View.GONE
                     etToolbarSearch.visibility = View.VISIBLE
+                    tvClear.visibility = View.VISIBLE
                 } else {
                     tvTitle.visibility = View.VISIBLE
                     tvPageType.visibility = View.VISIBLE
                     etToolbarSearch.visibility = View.GONE
+                    tvClear.visibility = View.GONE
                 }
+            }
+
+            etToolbarSearch.setOnKeyListener { view, i, keyEvent ->
+                if (keyEvent.action == KeyEvent.ACTION_DOWN && i == KeyEvent.KEYCODE_ENTER) {
+                    viewModel.setQuery((view as EditText).text.toString())
+                    viewModel.fetchNewsArticle(sourceId)
+                    etToolbarSearch.setText(viewModel.getQuery())
+                    return@setOnKeyListener true
+                }
+                return@setOnKeyListener false
+            }
+
+            tvClear.setOnClickListener {
+                if (viewModel.getQuery() != "") {
+                    viewModel.clearQuery()
+                    viewModel.fetchNewsArticle(sourceId)
+                }
+                etToolbarSearch.setText(viewModel.getQuery())
+
             }
         }
     }

@@ -13,6 +13,7 @@ interface NewsApi {
     @GET("everything")
     fun everything(
         @Query("sources") source: String,
+        @Query("q") query: String = "",
         @Query("page") page: Int = 1,
         @Query("pageSize") pageSize: Int = 20,
         @Query("sortBy") sortBy: String = PUBLISHED_AT,
