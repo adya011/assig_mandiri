@@ -10,4 +10,5 @@
     <dimen name="item_margin_source">8dp</dimen>
     <dimen name="item_radius_s">4dp</dimen>
     <dimen name="item_radius_m">8dp</dimen>
+    <dimen name="category_size">70dp</dimen>
 </resources>

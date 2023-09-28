@@ -11,18 +11,18 @@
         app:cardCornerRadius="@dimen/item_radius_m">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="20dp">
+            android:paddingHorizontal="@dimen/margin_xs"
+            android:paddingVertical="@dimen/margin_m">
 
             <ImageView
                 android:id="@+id/iv_category"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:gravity="center_horizontal"
+                android:layout_width="@dimen/category_size"
+                android:layout_height="@dimen/category_size"
+                android:layout_gravity="center_horizontal"
                 tools:src="@drawable/ic_business" />
 
             <TextView
