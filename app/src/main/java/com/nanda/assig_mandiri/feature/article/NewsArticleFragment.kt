@@ -138,9 +138,10 @@ class NewsArticleFragment : BaseFragment() {
             )
         }
 
-        viewModel.displayChild.observe(viewLifecycleOwner) {
-            binding.vfContent.displayedChild = it.first
-            binding.tvErrorMessage.text = it.second
+        viewModel.displayState.observe(viewLifecycleOwner) {
+            binding.vfContent.displayedChild = it.displayChild
+            binding.tvWarningTitle.text = it.title
+            binding.tvWarningMessage.text = it.description
         }
     }
 

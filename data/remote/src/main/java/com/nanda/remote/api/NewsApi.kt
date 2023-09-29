@@ -17,7 +17,6 @@ interface NewsApi {
         @Query("q") query: String = "",
         @Query("page") page: Int = 1,
         @Query("pageSize") pageSize: Int = PAGE_SIZE,
-        @Query("sortBy") sortBy: String = PUBLISHED_AT,
         @Query("apiKey") apiKey: String = API_KEY
     ): Deferred<Response<EverythingDto>>
 

@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nanda.assig_mandiri.util.CHILD_INDEX_ERROR
+import com.nanda.assig_mandiri.util.CHILD_INDEX_WARNING
 import com.nanda.assig_mandiri.util.CHILD_INDEX_LOADING
 import com.nanda.assig_mandiri.util.CHILD_INDEX_SUCCESS
 import com.nanda.domain.usecase.NewsArticleUseCase
@@ -36,7 +36,7 @@ class NewsSourceViewModel(
                     }
 
                     is DataState.Failure -> {
-                        _displayChild.value = CHILD_INDEX_ERROR to result.errorMessage
+                        _displayChild.value = CHILD_INDEX_WARNING to result.errorMessage
                     }
                 }
             }
