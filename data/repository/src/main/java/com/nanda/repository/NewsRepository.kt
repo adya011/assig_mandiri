@@ -5,6 +5,6 @@ import com.nanda.repository.model.DataResult
 import com.nanda.repository.model.SourceEntity
 
 interface NewsRepository {
-    suspend fun getArticle(source: String, query: String): DataResult<List<ArticleEntity>>
+    suspend fun getArticle(source: String, query: String, page: Int): DataResult<ArticleEntity>
     suspend fun getSource(category: String): DataResult<List<SourceEntity>>
 }

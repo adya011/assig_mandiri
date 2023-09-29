@@ -2,6 +2,7 @@ package com.nanda.domain.usecase
 
 import com.nanda.domain.model.resource.AppDispatchers
 import com.nanda.domain.usecase.resource.DataState
+import com.nanda.domain.usecase.model.ArticleItemUiState
 import com.nanda.domain.usecase.model.ArticleUiState
 import com.nanda.domain.usecase.model.SourceUiState
 import com.nanda.repository.NewsRepository
@@ -15,10 +16,10 @@ class NewsArticleUseCase(
     private val newsRepository: NewsRepository,
     private val appDispatchers: AppDispatchers
 ) {
-    fun getArticle(source: String, query: String) = flow {
+    fun getArticle(source: String, query: String, page: Int) = flow {
         emit(DataState.Loading(null))
 
-        when (val response = newsRepository.getArticle(source, query)) {
+        when (val response = newsRepository.getArticle(source, query, page)) {
             is DataResult.Success -> {
                 val data = response.body
                 emit(DataState.Success(data.mapNewsArticle()))
@@ -30,16 +31,19 @@ class NewsArticleUseCase(
         }
     }.flowOn(appDispatchers.io)
 
-    private fun List<ArticleEntity>.mapNewsArticle(): List<ArticleUiState> {
-        return map {
-            ArticleUiState(
-                id = it.id,
-                title = it.title,
-                description = it.description,
-                url = it.url,
-                urlToImage = it.urlToImage
-            )
-        }
+    private fun ArticleEntity.mapNewsArticle(): ArticleUiState {
+        return ArticleUiState(
+            total = total,
+            articles = articles.map {
+                ArticleItemUiState(
+                    id = it.id,
+                    title = it.title,
+                    description = it.description,
+                    url = it.url,
+                    urlToImage = it.urlToImage
+                )
+            }
+        )
     }
 
     fun getSources(category: String) = flow {

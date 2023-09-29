@@ -7,8 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.core.os.bundleOf
-import androidx.core.widget.doOnTextChanged
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.nanda.assig_mandiri.R
 import com.nanda.assig_mandiri.base.BaseFragment
 import com.nanda.assig_mandiri.databinding.FragmentNewsArticleBinding
@@ -16,6 +17,8 @@ import com.nanda.assig_mandiri.databinding.LayoutToolbarArticleBinding
 import com.nanda.assig_mandiri.util.ARG_SOURCE_NAME
 import com.nanda.assig_mandiri.util.ARG_SOURCE_VALUE
 import com.nanda.assig_mandiri.util.URL
+import com.nanda.domain.usecase.model.ArticleItemUiState
+import com.nanda.remote.util.PAGE_SIZE
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NewsArticleFragment : BaseFragment() {
@@ -25,8 +28,11 @@ class NewsArticleFragment : BaseFragment() {
     private var _binding: FragmentNewsArticleBinding? = null
     private val binding get() = _binding!!
 
-    private var articleAdapter: NewsArticleAdapter? = null
     private lateinit var sourceId: String
+
+    private var articleAdapter: NewsArticleAdapter? = null
+    private var infiniteScrollLoading: Boolean = false
+    private var disableInfiniteScroll: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +50,7 @@ class NewsArticleFragment : BaseFragment() {
         viewModel.fetchNewsArticle(sourceId)
         setToolbar(sourceName)
         setupAdapter()
+        setScrollListener()
         setupObserver()
     }
 
@@ -81,6 +88,7 @@ class NewsArticleFragment : BaseFragment() {
 
             etToolbarSearch.setOnKeyListener { view, i, keyEvent ->
                 if (keyEvent.action == KeyEvent.ACTION_DOWN && i == KeyEvent.KEYCODE_ENTER) {
+                    resetInfiniteScroll()
                     viewModel.setQuery((view as EditText).text.toString())
                     viewModel.fetchNewsArticle(sourceId)
                     etToolbarSearch.setText(viewModel.getQuery())
@@ -92,12 +100,18 @@ class NewsArticleFragment : BaseFragment() {
             tvClear.setOnClickListener {
                 if (viewModel.getQuery() != "") {
                     viewModel.clearQuery()
+                    resetInfiniteScroll()
                     viewModel.fetchNewsArticle(sourceId)
                 }
                 etToolbarSearch.setText(viewModel.getQuery())
-
             }
         }
+    }
+
+    private fun resetInfiniteScroll() {
+        viewModel.resetCurrentPage()
+        infiniteScrollLoading = false
+        disableInfiniteScroll = false
     }
 
     private fun setupAdapter() = with(binding) {
@@ -108,12 +122,55 @@ class NewsArticleFragment : BaseFragment() {
     }
 
     private fun setupObserver() {
-        viewModel.newsArticleLiveData.observe(viewLifecycleOwner) { articles ->
-            articleAdapter?.submitList(articles)
+        viewModel.newsArticleLiveData.observe(viewLifecycleOwner) { article ->
+            articleAdapter?.submitList(article.articles)
         }
+
+        viewModel.newsArticleLoadMoreLiveData.observe(viewLifecycleOwner) { articles ->
+            binding.rvArticle.postDelayed(
+                {
+                    val a: MutableList<ArticleItemUiState> =
+                        viewModel.newsArticleLiveData.value?.articles.orEmpty().toMutableList()
+                    val loadMoreData = viewModel.newsArticleLoadMoreLiveData.value.orEmpty()
+                    a.addAll(loadMoreData)
+                    articleAdapter?.submitList(a)
+                }, 700
+            )
+        }
+
         viewModel.displayChild.observe(viewLifecycleOwner) {
             binding.vfContent.displayedChild = it.first
             binding.tvErrorMessage.text = it.second
+        }
+    }
+
+    private fun setScrollListener() = with(binding) {
+        rvArticle.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val lastPos =
+                    (rvArticle.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
+
+                if (infiniteScrollLoading.not() &&
+                    lastPos == articleAdapter!!.itemCount - 1 &&
+                    disableInfiniteScroll.not() &&
+                    (viewModel.newsArticleLiveData.value?.total ?: 0) >= PAGE_SIZE
+                ) {
+                    disableInfiniteScroll = true
+                    viewModel.addCurrentPage()
+                    setInfiniteScrollLoadingState(articleAdapter!!.currentList)
+                    viewModel.fetchNewsArticle(sourceId, viewModel.getCurrentPage())
+                }
+            }
+        })
+    }
+
+    private fun setInfiniteScrollLoadingState(list: List<ArticleItemUiState>) {
+        infiniteScrollLoading = true
+        val itemLoading = ArticleItemUiState(isLoading = true)
+
+        if (list.contains(itemLoading).not()) {
+            articleAdapter?.submitList((list + itemLoading))
         }
     }
 

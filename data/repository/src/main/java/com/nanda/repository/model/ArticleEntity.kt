@@ -1,9 +1,6 @@
 package com.nanda.repository.model
 
 data class ArticleEntity(
-    val id: String,
-    val title: String,
-    val description: String,
-    val url: String,
-    val urlToImage: String
+    val total: Int,
+    val articles: List<ArticleItemEntity>
 )

@@ -1,9 +1,6 @@
 package com.nanda.domain.usecase.model
 
 data class ArticleUiState(
-    val id: String,
-    val title: String,
-    val description: String,
-    val url: String,
-    val urlToImage: String
+    val total: Int = 0,
+    val articles: List<ArticleItemUiState> = emptyList()
 )
