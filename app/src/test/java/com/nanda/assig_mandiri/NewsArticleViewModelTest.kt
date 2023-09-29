@@ -158,6 +158,49 @@ class NewsArticleViewModelTest : BaseTest() {
     }
 
     @Test
+    fun `fetch news article - success data load more from API`() {
+        // Given
+        val source = "bloomberg"
+        val query = ""
+        val page = 2
+        val mockDisplayState = DisplayStateArticle(CHILD_INDEX_SUCCESS)
+        val mockArticleData = ArticleUiState(
+            total = 16,
+            articles = listOf(
+                ArticleItemUiState(
+                    id = "bloomberg",
+                    title = "title",
+                    description = "description",
+                    url = "www.sample.com",
+                    urlToImage = "url-to-image"
+                )
+            )
+        )
+
+        val displayStateObserver = mockk<Observer<DisplayStateArticle?>>(relaxed = true)
+        val newsArticleLoadMoreObserver = mockk<Observer<List<ArticleItemUiState>?>>(relaxed = true)
+
+        viewModel.displayState.observeForever(displayStateObserver)
+        viewModel.newsArticleLoadMoreLiveData.observeForever(newsArticleLoadMoreObserver)
+
+        val flowResult = flow { emit(DataState.Success<ArticleUiState>(mockArticleData)) }
+        every { newsUseCase.getArticle(source, query, page) } returns flowResult
+
+        // When
+        viewModel.setCurrentPage(2)
+        viewModel.fetchNewsArticle(source, page)
+
+        // Then
+        verifyOrder {
+            displayStateObserver.onChanged(viewModel.displayState.value)
+            newsArticleLoadMoreObserver.onChanged(viewModel.newsArticleLoadMoreLiveData.value)
+        }
+
+        Assert.assertEquals(mockDisplayState, viewModel.displayState.value)
+        Assert.assertEquals(mockArticleData.articles, viewModel.newsArticleLoadMoreLiveData.value)
+    }
+
+    @Test
     fun `fetch news article with search - success data from API`() {
         // Given
         val source = "bloomberg"
