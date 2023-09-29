@@ -12,7 +12,7 @@ import com.nanda.repository.model.SourceEntity
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class NewsArticleUseCase(
+class NewsUseCase(
     private val newsRepository: NewsRepository,
     private val appDispatchers: AppDispatchers
 ) {

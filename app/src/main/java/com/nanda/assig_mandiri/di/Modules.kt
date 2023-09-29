@@ -3,7 +3,7 @@ package com.nanda.assig_mandiri.di
 import com.nanda.assig_mandiri.feature.article.NewsArticleViewModel
 import com.nanda.assig_mandiri.feature.source.NewsSourceViewModel
 import com.nanda.domain.model.resource.AppDispatchers
-import com.nanda.domain.usecase.NewsArticleUseCase
+import com.nanda.domain.usecase.NewsUseCase
 import com.nanda.remote.api.NewsApi
 import org.koin.dsl.module
 import com.nanda.remote.util.RetrofitBuilder
@@ -24,7 +24,7 @@ object Modules {
     }
 
     private val useCaseModules = module {
-        single { NewsArticleUseCase(get(), get()) }
+        single { NewsUseCase(get(), get()) }
     }
 
     private val viewModelModules = module {

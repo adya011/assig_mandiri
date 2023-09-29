@@ -42,5 +42,11 @@ dependencies {
 
     implementation AndroidLibraries.retrofit
 
+    testImplementation(AndroidLibraries.mockk)
+    testImplementation(AndroidLibraries.mockkJvm)
+    testImplementation(AndroidLibraries.mockWebServer)
+    testImplementation(AndroidLibraries.moshiConverter)
+    testImplementation(AndroidLibraries.retrofitCoroutineAdapter)
+
     implementation project(Modules.DataRemote)
 }

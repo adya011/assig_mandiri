@@ -24,6 +24,14 @@ object AndroidLibraries {
     const val moshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.moshiConverter}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val kotlinCoroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
+
+    // Test
+    const val mockk = "io.mockk:mockk:${Versions.mockk}"
+    const val mockkJvm = "io.mockk:mockk-agent-jvm:${Versions.mockk}"
+    const val coroutineTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
+    const val turbine = "app.cash.turbine:turbine:${Versions.turbine}"
+    const val archCoreTest = "androidx.arch.core:core-testing:${Versions.archCoreTest}"
+    const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.okHttp}"
 }
 
 object Versions {
@@ -36,6 +44,10 @@ object Versions {
     const val coroutines = "1.6.0"
     const val gson = "2.10.1"
     const val glide = "4.15.1"
+    const val mockk = "1.12.1"
+    const val turbine = "0.12.1"
+    const val archCoreTest = "2.1.0"
+    const val okHttp = "5.0.0-alpha.11"
 }
 
 object Modules {

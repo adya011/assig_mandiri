@@ -10,14 +10,14 @@ import com.nanda.assig_mandiri.util.CHILD_INDEX_LOADING
 import com.nanda.assig_mandiri.util.CHILD_INDEX_SUCCESS
 import com.nanda.assig_mandiri.util.EMPTY_DATA
 import com.nanda.assig_mandiri.util.ERROR
-import com.nanda.domain.usecase.NewsArticleUseCase
+import com.nanda.domain.usecase.NewsUseCase
 import com.nanda.domain.usecase.model.ArticleItemUiState
 import com.nanda.domain.usecase.model.ArticleUiState
 import com.nanda.domain.usecase.resource.DataState
 import kotlinx.coroutines.launch
 
 class NewsArticleViewModel(
-    private val newsArticleUseCase: NewsArticleUseCase
+    private val newsUseCase: NewsUseCase
 ) : ViewModel() {
 
     private val _newsArticleLiveData by lazy { MutableLiveData<ArticleUiState>() }
@@ -34,7 +34,7 @@ class NewsArticleViewModel(
 
     fun fetchNewsArticle(source: String, page: Int = 1) {
         viewModelScope.launch {
-            newsArticleUseCase.getArticle(source, query, page).collect { result ->
+            newsUseCase.getArticle(source, query, page).collect { result ->
                 when (result) {
                     is DataState.Loading -> {
                         if (currentPage == 1) {
@@ -83,5 +83,9 @@ class NewsArticleViewModel(
 
     fun resetCurrentPage() {
         currentPage = 1
+    }
+
+    fun setCurrentPage(page: Int) {
+        currentPage = page
     }
 }

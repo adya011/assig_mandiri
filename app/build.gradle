@@ -57,6 +57,11 @@ dependencies {
     implementation AndroidLibraries.navigationFrag
     implementation AndroidLibraries.glide
 
+    testImplementation(AndroidLibraries.coroutineTest)
+    testImplementation(AndroidLibraries.mockk)
+    testImplementation(AndroidLibraries.mockkJvm)
+    implementation(AndroidLibraries.archCoreTest)
+
     implementation project(Modules.DataRemote)
     implementation project(Modules.Domain)
     implementation project(Modules.DataRepository)

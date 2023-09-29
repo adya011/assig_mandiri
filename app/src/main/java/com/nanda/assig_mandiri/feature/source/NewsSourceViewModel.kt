@@ -7,13 +7,13 @@ import androidx.lifecycle.viewModelScope
 import com.nanda.assig_mandiri.util.CHILD_INDEX_WARNING
 import com.nanda.assig_mandiri.util.CHILD_INDEX_LOADING
 import com.nanda.assig_mandiri.util.CHILD_INDEX_SUCCESS
-import com.nanda.domain.usecase.NewsArticleUseCase
+import com.nanda.domain.usecase.NewsUseCase
 import com.nanda.domain.usecase.model.SourceUiState
 import com.nanda.domain.usecase.resource.DataState
 import kotlinx.coroutines.launch
 
 class NewsSourceViewModel(
-    private val newsArticleUseCase: NewsArticleUseCase
+    private val newsUseCase: NewsUseCase
 ) : ViewModel() {
 
     private val _newsSourceLiveData by lazy { MutableLiveData<List<SourceUiState>>() }
@@ -24,7 +24,7 @@ class NewsSourceViewModel(
 
     fun fetchNewsSource(category: String) {
         viewModelScope.launch {
-            newsArticleUseCase.getSources(category).collect { result ->
+            newsUseCase.getSources(category).collect { result ->
                 when (result) {
                     is DataState.Loading -> {
                         _displayChild.value = CHILD_INDEX_LOADING to ""
