@@ -71,9 +71,9 @@ class NewsSourceFragment : BaseFragment() {
         viewModel.newsSourceLiveData.observe(viewLifecycleOwner) { sources ->
             sourceAdapter?.submitList(sources)
         }
-        viewModel.displayChild.observe(viewLifecycleOwner) {
-            binding.vfContent.displayedChild = it.first
-            binding.tvErrorMessage.text = it.second
+        viewModel.displayState.observe(viewLifecycleOwner) {
+            binding.vfContent.displayedChild = it.displayChild
+            binding.tvWarningMessage.text = it.description
         }
     }
 

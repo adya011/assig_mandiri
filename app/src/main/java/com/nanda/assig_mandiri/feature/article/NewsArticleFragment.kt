@@ -129,11 +129,10 @@ class NewsArticleFragment : BaseFragment() {
         viewModel.newsArticleLoadMoreLiveData.observe(viewLifecycleOwner) { articles ->
             binding.rvArticle.postDelayed(
                 {
-                    val a: MutableList<ArticleItemUiState> =
-                        viewModel.newsArticleLiveData.value?.articles.orEmpty().toMutableList()
-                    val loadMoreData = viewModel.newsArticleLoadMoreLiveData.value.orEmpty()
-                    a.addAll(loadMoreData)
-                    articleAdapter?.submitList(a)
+                    val currItems = viewModel.newsArticleLiveData.value?.articles.orEmpty().toMutableList()
+                    val loadMoreItems = viewModel.newsArticleLoadMoreLiveData.value.orEmpty()
+                    currItems.addAll(loadMoreItems)
+                    articleAdapter?.submitList(currItems)
                 }, 700
             )
         }

@@ -43,7 +43,7 @@ class NewsArticleViewModel(
                     }
 
                     is DataState.Success -> {
-                        if(result.data.articles.isEmpty().not()) {
+                        if (result.data.articles.isEmpty().not()) {
                             _displayState.value = DisplayStateArticle(CHILD_INDEX_SUCCESS)
                         } else {
                             _displayState.value = DisplayStateArticle(CHILD_INDEX_WARNING, EMPTY_DATA)
