@@ -1,0 +1,136 @@
+{
+  "status": "ok",
+  "totalResults": 16,
+  "articles": [
+    {
+      "source": {
+        "id": "bloomberg",
+        "name": "Bloomberg"
+      },
+      "author": "Bloomberg",
+      "title": "India spat spills over into boardroom of Canadian potash firm Karnalyte",
+      "description": "Karnalyte Resources Inc., a Canadian potash firm with ties to India, has had to cancel plans to meet with its Indian board members due to the worsening diplomatic feud between the two countries. The Saskatchewan-based firm counts two Indian executives and one…",
+      "url": "https://www.bloomberg.com/news/articles/2023-09-26/india-spat-spills-over-into-boardroom-of-canadian-potash-firm-karnalyte",
+      "urlToImage": "https://bl-i.thgim.com/public/news/exi2qn/article67351954.ece/alternates/LANDSCAPE_1200/IMG_iStock-1093161848_2_1_1SBCD1DB.jpg",
+      "publishedAt": "2023-09-27T06:13:53Z",
+      "content": "For even some of the smallest Canadian companies with ties to India, day-to-day business has been complicated by a worsening diplomatic feud between the two countries.\r\nKarnalyte Resources Inc. abrup… [+1834 chars]"
+    },
+    {
+      "source": {
+        "id": "bloomberg",
+        "name": "Bloomberg"
+      },
+      "author": "Bloomberg",
+      "title": "Adani Ports to buy back another $195 million of 2024 Bond",
+      "description": "Adani Ports to buy back $195M of 2024 bond. Notes jumped most since April on news of $975/$1,000 principal for debt tendered by Oct 11. Adani seeks to rebuild investor confidence after US shortseller's allegations. Bond buybacks allow companies to retire debt…",
+      "url": "https://www.bloomberg.com/news/articles/2023-09-27/adani-ports-offers-to-buy-back-more-of-its-2024-dollar-bond",
+      "urlToImage": "https://bl-i.thgim.com/public/todays-paper/tp-markets/4sq2z4/article66510132.ece/alternates/LANDSCAPE_1200/Adani-Group-fia%2BGJQASIAOE.3.jpg.jpg",
+      "publishedAt": "2023-09-27T04:32:27Z",
+      "content": "Adani Ports and Special Economic Zone Ltd will buy back as much as $195 million of its 2024 bond, as the conglomerate backed by billionaire Gautam Adani seeks to move on from the allegations levied b… [+1798 chars]"
+    },
+    {
+      "source": {
+        "id": "bloomberg",
+        "name": "Bloomberg"
+      },
+      "author": "Bloomberg",
+      "title": "Taliban controls the world’s best performing currency this quarter",
+      "description": "Afghanistan's currency has risen 9% this quarter, due to humanitarian aid, trade with Asian neighbours, and currency controls. Despite the currency's rise, the country faces economic, social, and political instability, with unemployment, poverty, and human ri…",
+      "url": "https://www.bloomberg.com/news/articles/2023-09-25/taliban-controls-world-s-best-performing-currency-this-quarter",
+      "urlToImage": "https://bl-i.thgim.com/public/incoming/h2smgd/article67347602.ece/alternates/LANDSCAPE_1200/MDF27883.JPG",
+      "publishedAt": "2023-09-26T05:50:46Z",
+      "content": "Billions of dollars from humanitarian aid and rising trade with Asian neighbours has propelled Afghanistans currency to the top of global rankings this quarter an unusual spot for a poverty-stricken … [+6376 chars]"
+    },
+    {
+      "source": {
+        "id": "bloomberg",
+        "name": "Bloomberg"
+      },
+      "author": "Bloomberg",
+      "title": "HDFC Bank gets rare analyst downgrade on loan growth concerns",
+      "description": "HDFC Bank Ltd. shares fell 4.2% after Nomura Holdings Inc. downgraded the stock due to lowered revision of parent's business. Nomura analysts cited concerns over HDFC's return on assets and loan growth pressures. HDFC Bank merged with parent HDFC Ltd. in July…",
+      "url": "https://www.bloomberg.com/news/articles/2023-09-20/hdfc-bank-gets-rare-analyst-downgrade-on-loan-growth-concerns",
+      "urlToImage": "https://bl-i.thgim.com/public/incoming/vmqvrx/article67325880.ece/alternates/LANDSCAPE_1200/2023-04-21T112301Z_809828748_RC2YI0ANW80C_RTRMADP_3_INDIA-BANKS-HDFC-BANK.JPG",
+      "publishedAt": "2023-09-20T10:25:43Z",
+      "content": "Shares of HDFC Bank Ltd. fell as much as 4.2 per cent after Nomura Holdings Inc. downgraded the stock, prompted by the lenders lowered revision of the business absorbed from its parent. \r\nThe downgra… [+1074 chars]"
+    },
+    {
+      "source": {
+        "id": "bloomberg",
+        "name": "Bloomberg"
+      },
+      "author": "Bloomberg",
+      "title": "Citigroup and BNP among banks exploring $15 billion Indian Ocean project",
+      "description": "Banks incl. Citigroup, BNP Paribas, Standard Chartered, HSBC, Societe Generale & Rothschild & Co. are exploring financing options for a $15B program to protect Indian ocean habitats. The Great Blue Wall initiative has already raised $100M & a $200M project pr…",
+      "url": "https://www.bloomberg.com/news/articles/2023-09-19/citi-bnp-among-banks-exploring-15-billion-indian-ocean-project",
+      "urlToImage": "https://bl-i.thgim.com/public/incoming/vwdrz2/article67325081.ece/alternates/LANDSCAPE_1200/IMG_Photo_8_final_2_1_3OAMIJU2.jpg",
+      "publishedAt": "2023-09-20T04:01:25Z",
+      "content": "Citigroup Inc., BNP Paribas SA and Standard Chartered Plc are among the banks looking into providing financing for a new $15 billion program to protect Indian ocean habitats.\r\nThe banks, which also i… [+3559 chars]"
+    },
+    {
+      "source": {
+        "id": "bloomberg",
+        "name": "Bloomberg"
+      },
+      "author": "Bloomberg",
+      "title": "Microsoft AI researchers accidentally exposed big cache of data",
+      "description": "Microsoft investigated and remediated an incident involving its employee who shared a URL in a public GitHub repository to open-source AI learning models.",
+      "url": "https://www.bloomberg.com/news/articles/2023-09-18/microsoft-ai-researchers-accidentally-exposed-big-cache-of-data",
+      "urlToImage": "https://bl-i.thgim.com/public/incoming/ebd8l4/article67321808.ece/alternates/LANDSCAPE_1200/2023-09-06T195735Z_941892624_RC2LXY9W9FXP_RTRMADP_3_CHINA-USA-CYBER.JPG",
+      "publishedAt": "2023-09-19T07:36:44Z",
+      "content": "Microsoft Corp.s AI research team accidentally exposed a large cache of private data on the software development platform GitHub, according to new research from a cybersecurity firm. \r\nA team at the … [+2025 chars]"
+    },
+    {
+      "source": {
+        "id": "bloomberg",
+        "name": "Bloomberg"
+      },
+      "author": "Bloomberg",
+      "title": "Modi hints at ‘historic’ decisions in Parliament session before elections",
+      "description": "PM Modi promises \"historic decisions\" in brief, out-of-turn session of Parliament. Possibilities include Women's Reservation Bill, early elections, name change for India, and civil code. Opposition parties concerned about Modi's agenda.",
+      "url": "https://www.bloomberg.com/news/articles/2023-09-19/modi-vow-of-historic-parliament-session-fuels-talk-of-surprise",
+      "urlToImage": "https://bl-i.thgim.com/public/incoming/tzed68/article67320631.ece/alternates/LANDSCAPE_1200/PTI09_18_2023_000021A.jpg",
+      "publishedAt": "2023-09-19T06:30:39Z",
+      "content": "Prime Minister Narendra Modi promised historic decisions in a brief and out-of-turn parliament session, triggering speculation about what could be on the cards months before national elections are du… [+3286 chars]"
+    },
+    {
+      "source": {
+        "id": "bloomberg",
+        "name": "Bloomberg"
+      },
+      "author": "Bloomberg",
+      "title": "Dixon Technologies to open new smartphone plant on outskirts of Delhi amid push to go local",
+      "description": "Xiaomi supplier Dixon Technologies India Ltd. is set to open a 300,000 sq. ft. factory in New Delhi to produce smartphones, as India pushes Chinese tech firms to localize production. Dixon will invest $48.2M over 3 years, while Xiaomi has also handed a contra…",
+      "url": "https://www.bloomberg.com/news/articles/2023-09-15/xiaomi-supplier-to-open-smartphone-plant-as-india-pushes-local",
+      "urlToImage": "https://bl-i.thgim.com/public/incoming/1uvca1/article66361351.ece/alternates/LANDSCAPE_1200/367705938_0-21.jpg",
+      "publishedAt": "2023-09-15T04:53:37Z",
+      "content": "Xiaomi Inc. supplier Dixon Technologies India Ltd is set to open a massive new factory on the outskirts of New Delhi, as Chinese tech firms are urged to use local assembly partners.\r\nDixon will inves… [+2235 chars]"
+    },
+    {
+      "source": {
+        "id": "bloomberg",
+        "name": "Bloomberg"
+      },
+      "author": "Bloomberg",
+      "title": "Total said to be in talks to invest in Adani Green’s projects",
+      "description": "Total in talks to invest in Adani Green Energy projects. Potential deal could see Total invest $700M in renewable energy projects. Total already 2nd largest shareholder in Adani Green with 19.75% stake. Total looking to expand clean energy portfolio, Adani Gr…",
+      "url": "https://www.bloomberg.com/news/articles/2023-09-15/total-is-said-in-talks-to-invest-in-adani-green-s-projects",
+      "urlToImage": "https://bl-i.thgim.com/public/incoming/c8z9nl/article67310429.ece/alternates/LANDSCAPE_1200/2023-09-15T040213Z_1086224543_RC2983A7JZNI_RTRMADP_3_ADANI-GREEN-INVESTMENT-TOTALENERGIES.JPG",
+      "publishedAt": "2023-09-15T04:37:10Z",
+      "content": "TotalEnergies SE is in talks to invest in renewable energy projects developed by Adani Green Energy Ltd., people familiar with the matter said, potentially marking the first public deal between the F… [+2934 chars]"
+    },
+    {
+      "source": {
+        "id": "bloomberg",
+        "name": "Bloomberg"
+      },
+      "author": "www.bloomberg.com",
+      "title": "How Sam Bankman-Fried's Elite Parents Enabled His Crypto Empire...",
+      "description": null,
+      "url": "https://www.bloomberg.com/news/features/2023-09-14/sam-bankman-fried-s-parents-did-they-enable-ftx-s-rise?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzb3VyY2UiOiJTdWJzY3JpYmVyR2lmdGVkQXJ0aWNsZSIsImlhdCI6MTY5NDcwMDMyMCwiZXhwIjoxNjk1MzA1MTIwLCJhcnRpY2xlSWQiOiJTMFlKNjFEV1JHRzEwMSIsImJjb25uZWN0SWQiOiIxRDU0RjgxNUE1QTA0MjY3QjQ1RjhBNjI0QUQ5REU5MCJ9.d5qRT5zsps-a2T1Z7nA47WwrwmlCuSggJDoKAwg-yqQ&sref=4ZgkJ7cZ",
+      "urlToImage": null,
+      "publishedAt": "2023-09-14T21:00:03Z",
+      "content": "How Sam Bankman-Fried's Elite Parents Enabled His Crypto Empire...Click here to read the full article The post How Sam Bankman-Fried's Elite Parents Enabled His Crypto Empire... captured from The Dru… [+726 chars]"
+    }
+  ]
+}
